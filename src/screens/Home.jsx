@@ -4,6 +4,7 @@ import Product from "../components/Product";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../components/Header";
 import { fetchProducts, STATUSES } from "../store/productSlice";
+import {getProducts} from '../service.js';
 
 export default function Home() {
   // const [products, setProducts] = React.useState([]);
@@ -263,6 +264,7 @@ export default function Home() {
     };
     // fetchData();
     dispatch(fetchProducts());
+    getProducts();
   }, []);
 
   return (
@@ -270,7 +272,7 @@ export default function Home() {
       <Header />
       {status == STATUSES.LOADING ? (
         <View style={{ marginVertical: "60%" }}>
-          <ActivityIndicator animating={true} size="large" color="pink" />
+          <ActivityIndicator animating={true} size="large" color="#F56C81" />
         </View>
       ) : (
         <FlatList

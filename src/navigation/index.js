@@ -1,11 +1,20 @@
+import React, {useState,useEffect} from "react";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Cart from "../screens/Cart";
-import Home from "../screens/Home";
+import MainStack from "./MainStack";
+import AuthStack from "./AuthStack";
+
+
 
 const Stack = createNativeStackNavigator();
 
 function RootNavigation() {
+
+  const [user, setUSer]=useState(true);
+
+  useEffect(()=>{
+
+  })
   const MyTheme = {
     ...DefaultTheme,
     colors: {
@@ -16,23 +25,11 @@ function RootNavigation() {
 
   return (
     <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Cart"
-          component={Cart}
-          options={{
-            title: "Shopping Cart",
-            headerStyle: {
-              backgroundColor: "pink",
-            },
-          }}
-        />
-      </Stack.Navigator>
+      {
+        user ? <MainStack Stack={Stack} /> :
+        <AuthStack Stack={Stack} />
+      }
+
     </NavigationContainer>
   );
 }

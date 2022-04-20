@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function Header() {
   const navigation=useNavigation()
-  const { count } = useSelector((state) => state.cart);
+  const items = useSelector((state) => state.cart);
 
   return (
     <View style={styles.header}>
@@ -20,12 +20,12 @@ export default function Header() {
         }}
       >
         <Octicons name="three-bars" size={26} color="black" />
-        <Text style={styles.headerName}>Redux Store</Text>
+        <Text style={styles.headerName}> RTK Store</Text>
       </View>
       <TouchableOpacity style={styles.cart} onPress={()=>navigation.navigate('Cart')}>
         <Feather name="shopping-cart" size={22} color="black" />
         <View style={styles.badge}>
-          <Text style={styles.text}>{count}</Text>
+          <Text style={styles.text}>{items.length}</Text>
         </View>
       </TouchableOpacity>
     </View>

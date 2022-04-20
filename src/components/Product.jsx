@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {add, subs} from '../store/cartSlice'
+import { addProduct} from '../store/cartSlice'
 
 export default function Product({ item }) {
   const dispatch=useDispatch();
@@ -30,7 +30,7 @@ export default function Product({ item }) {
         }}
       >
         <Text style={{ fontWeight: "bold" , fontSize:12, textAlign:'center'}}
-          onPress={()=>dispatch(add())}
+          onPress={()=>dispatch(addProduct(item))}
         >Add to Cart</Text>
       </TouchableOpacity>
     </View>
