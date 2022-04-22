@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from "react-native";
-import React from "react";
+import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeProduct } from "../store/cartSlice";
 
@@ -7,11 +7,17 @@ import { removeProduct } from "../store/cartSlice";
 export default function Cart() {
   const items = useSelector((state) => state.cart);
   const dispatch =useDispatch();
-  console.log(items, "state data in cart");
+
+  useEffect(() => {
+
+    return()=>(
+      console.log('unmounting component')
+    )
+  })
 
   const CartItem = ({ item, index }) => {
     return (
-      <View key={item.id} style={{ flexDirection: "row" ,  borderBottomWidth:1,
+      <View key={index} style={{ flexDirection: "row" ,  borderBottomWidth:1,
       borderColor:'#E5E3E4',
       marginVertical:15,
       paddingVertical:5}}>

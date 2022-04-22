@@ -10,12 +10,16 @@ import React from "react";
 import GlobalTextInput from "../components/GlobalTextInput";
 import GlobalButton from "../components/GlobalButton";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch , useSelector} from "react-redux";
+import { setIsLoading, setUserToken } from "../store/AuthSlice";
 
 export default function Login() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const onLogin = () => {
-    console.log("On Login Function");
+    console.log('onLogin');
+    dispatch(setUserToken('token'));
   };
 
   function navigateSignUp() {

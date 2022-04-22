@@ -6,6 +6,8 @@ import { addProduct} from '../store/cartSlice'
 export default function Product({ item }) {
   const dispatch=useDispatch();
 
+  
+
   return (
     <View style={{ marginHorizontal: 10,marginVertical:10, height: 250, width: 150,}}>
       <Image
@@ -19,18 +21,20 @@ export default function Product({ item }) {
         $ {item.price}
       </Text>
       <TouchableOpacity
+         onPress={()=>dispatch(addProduct(item))}
         style={{
           backgroundColor: "pink",
           marginTop: 10,
           alignSelf:'center',
           justifyContent:'center',
           borderRadius:10,
-          width:'80%',
-          height:30,
+          width:'90%',
+          height:39,
+          shadowOpacity: 0.25,
         }}
       >
         <Text style={{ fontWeight: "bold" , fontSize:12, textAlign:'center'}}
-          onPress={()=>dispatch(addProduct(item))}
+         
         >Add to Cart</Text>
       </TouchableOpacity>
     </View>
